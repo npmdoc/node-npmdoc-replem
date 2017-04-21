@@ -1,0 +1,218 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+    >replem (v2.0.1)</a>
+</h1>
+<h4>Instantly try npm modules in REPL environment</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replem">module replem</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replem.</span>npm</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">replem.</span>str</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replem.npm">module replem.npm</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replem.npm.install">
+            function <span class="apidocSignatureSpan">replem.npm.</span>install
+            <span class="apidocSignatureSpan">(packages)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replem.npm.load">
+            function <span class="apidocSignatureSpan">replem.npm.</span>load
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.replem.str">module replem.str</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.replem.str.startsWith">
+            function <span class="apidocSignatureSpan">replem.str.</span>startsWith
+            <span class="apidocSignatureSpan">(a0, a1)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replem" id="apidoc.module.replem">module replem</a></h1>
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replem.npm" id="apidoc.module.replem.npm">module replem.npm</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replem.npm.install" id="apidoc.element.replem.npm.install">
+        function <span class="apidocSignatureSpan">replem.npm.</span>install
+        <span class="apidocSignatureSpan">(packages)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(packages) =&#x3e;
+Future((rej, res) =&#x3e; {
+  console.log = noop;
+  npm.commands.install(packages, (err, out) =&#x3e; {
+    console.log = log;
+    err ? rej(err) : res(out);
+  });
+})</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  npm.load(opts, (err, data) =&#x3e;
+    err ? rej(err) : res(data)
+  ));
+
+exports.install = (packages) =&#x3e;
+Future((rej, res) =&#x3e; {
+  console.log = noop;
+  npm.commands.<span class="apidocCodeKeywordSpan">install</span>(packages, (err, out) =&#x3e; {
+    console.log = log;
+    err ? rej(err) : res(out);
+  });
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.replem.npm.load" id="apidoc.element.replem.npm.load">
+        function <span class="apidocSignatureSpan">replem.npm.</span>load
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">(opts) =&#x3e;
+Future((rej, res) =&#x3e;
+  npm.load(opts, (err, data) =&#x3e;
+    err ? rej(err) : res(data)
+  ))</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+const { Future } = require(&#x27;ramda-fantasy&#x27;);
+const npm = require(&#x27;npm&#x27;);
+const noop = () =&#x3e; {};
+const log = console.log;
+
+exports.load = (opts) =&#x3e;
+Future((rej, res) =&#x3e;
+  npm.<span class="apidocCodeKeywordSpan">load</span>(opts, (err, data) =&#x3e;
+    err ? rej(err) : res(data)
+  ));
+
+exports.install = (packages) =&#x3e;
+Future((rej, res) =&#x3e; {
+  console.log = noop;
+  npm.commands.install(packages, (err, out) =&#x3e; {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.replem.str" id="apidoc.module.replem.str">module replem.str</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.replem.str.startsWith" id="apidoc.element.replem.str.startsWith">
+        function <span class="apidocSignatureSpan">replem.str.</span>startsWith
+        <span class="apidocSignatureSpan">(a0, a1)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">startsWith = function (a0, a1) {
+    return fn.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
